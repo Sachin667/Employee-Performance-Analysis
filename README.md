@@ -107,3 +107,36 @@ far away from its Mean and Median
  * **Data Balancing** - 
  
 **SMOTE()** - It is an oversampling technique aims to balance class distribution by randomly increasing minority class examples by replicating them.Our data is highly imbalanced (72% :17% :11%) and any model without balancing would be a dump model..For balancing the data i used SMOTE() oversampling technique...
+
+## Model Creation    
+In the **model building** part,
+  * **Evaluation Metrics**-
+    * **Weighted F1 SCORE** - we are taking f1 score as the performance metrics,f1 score is the harmonic mean of precision            and recall..
+    * **why weighted f1 score??** Data is highly imbalanced (72% :17% :11%) and applying an algoithm with this             data leads to overfit and missclassfication will occur..Too avoid this problem we applied some SMOTE techniques and             selects evaluation metric as Weighted F1 score for checking the performance of our model...
+    * **Precision and Recall**- The percentage of true positive rate and False positive rate
+    * **Confusion Matrix** - To know the classfication in each classes, FPR and FNR and its perncetage,in which extend                 overfitting occurs
+       
+       
+ I tried  with 8 base models and based on the performance selected **top 4 models** for tuning 
+ 
+ 
+   * **Random Forest Classifier** - It is a supervised learning algorithm  and It is basically a set of decision trees (DT) from a        randomly selected subset of the training set and then It collects the votes from different decision trees to decide the          final prediction.In our model building at first, the Random model overfits with default paramters.The main reason is            imbalanced data set but with a good weighted f1 score of 94%..But it in real life scenario this model will not work well        due to its high variance...So i tried for a generalized model that produces a result with  low varaince and low 
+   bais..After      hyper paramter tuning score is 93% with very minimal presense of overfitting..
+
+* **Catboost Classifier**- It is a boosting supervised machine learning algorthm mostly work with categorical data ..But the          model overfits even after hyper paramter tuning
+
+
+* **XGB and Gradient Boosting** - These are another boosting algorithms used for model building..Both the both models give good        result of 92% 
+   * For **hyper paramtertuning** i used
+        * **GridSearch CV**-(is the process of performing hyperparameter tuning in order to determine the optimal values for a given model.)
+        * **Kfold Cross validation**-(It is data partitioning strategy) It really helps to avoid overfitting problem and helps  to build the model is a generalized one.
+       
+
+**Tried but Failed !!!!***
+ * For hyper parameter tuning i tried Randomized SesrchCV  but result was not upto the mark...
+ * Models like decsion tree,logistic regression and SVM also didnot give good results
+ * Unsupervised model of PCA is also tried ,result was poor and it was not addressed the relevent features 
+ * Also tried Hard outlier handling and square root tranformation,but it resulted very poor model..
+ * At first Plotly and hvplots libraries are used but due to file size issue changed to Seaborn and Matplotlib libraries 
+ 
+ 
